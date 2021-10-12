@@ -14,8 +14,10 @@ class Market {
     lines = lines.sublist(1);
     for (var line in lines) {
       final cols = line.substring(0, line.length - 1).split(',');
-      _typeID = int.parse(cols[2]);
-      _regionID = int.parse(cols[11]);
+      if (!exists()) {
+        _typeID = int.parse(cols[2]);
+        _regionID = int.parse(cols[11]);
+      }
 
       final price = double.parse(cols[0]);
       final volumeRemaining = double.parse(cols[1]).toInt();
