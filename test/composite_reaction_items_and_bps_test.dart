@@ -107,4 +107,58 @@ void main() {
 
     sde.dispose();
   });
+
+  test('isItemBuildable returns true because item has a blueprint', () {
+    final sde = EveSDE(sqlite3.openInMemory());
+    sde.setupForTesting();
+
+    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.bpProductTb.insert(999, 1, 42);
+
+    final eveSD = CompositeReactionItemsAndBPs(sde);
+
+    expect(eveSD.isItemBuildable(1), true);
+
+    sde.dispose();
+  });
+
+  test('isItemBuildable returns false because item does not have a blueprint', () {
+    final sde = EveSDE(sqlite3.openInMemory());
+    sde.setupForTesting();
+
+    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.bpProductTb.insert(999, 2, 42);
+
+    final eveSD = CompositeReactionItemsAndBPs(sde);
+
+    expect(eveSD.isItemBuildable(1), false);
+
+    sde.dispose();
+  });
+
+  test('isItemFuelBlock returns true', () {
+    final sde = EveSDE(sqlite3.openInMemory());
+    sde.setupForTesting();
+
+    sde.typesTb.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID, 9);
+
+    final eveSD = CompositeReactionItemsAndBPs(sde);
+
+    expect(eveSD.isItemFuelBlock(1), true);
+
+    sde.dispose();
+  });
+
+  test('isItemFuelBlock returns false', () {
+    final sde = EveSDE(sqlite3.openInMemory());
+    sde.setupForTesting();
+
+    sde.typesTb.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID + 1, 9);
+
+    final eveSD = CompositeReactionItemsAndBPs(sde);
+
+    expect(eveSD.isItemFuelBlock(1), false);
+
+    sde.dispose();
+  });
 }
