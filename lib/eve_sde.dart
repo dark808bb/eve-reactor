@@ -8,22 +8,22 @@ import 'package:evereactor/tables/inv_types_table.dart';
 class EveSDE {
   final Database db;
 
-  final InvTypesTable typesTb;
-  final IndustryActivityProductsTable bpProductTb;
-  final IndustryActivityMaterialsTable bpMaterialsTb;
-  final IndustryActivityTable bpTimeTb;
+  final InvTypesTable types;
+  final IndustryActivityProductsTable bpProduct;
+  final IndustryActivityMaterialsTable bpMaterials;
+  final IndustryActivityTable bpTime;
 
   EveSDE(this.db)
-      : typesTb = InvTypesTable(db),
-        bpProductTb = IndustryActivityProductsTable(db),
-        bpMaterialsTb = IndustryActivityMaterialsTable(db),
-        bpTimeTb = IndustryActivityTable(db);
+      : types = InvTypesTable(db),
+        bpProduct = IndustryActivityProductsTable(db),
+        bpMaterials = IndustryActivityMaterialsTable(db),
+        bpTime = IndustryActivityTable(db);
 
   void setupForTesting() {
-    typesTb.create();
-    bpProductTb.create();
-    bpMaterialsTb.create();
-    bpTimeTb.create();
+    types.create();
+    bpProduct.create();
+    bpMaterials.create();
+    bpTime.create();
   }
 
   void dispose() {

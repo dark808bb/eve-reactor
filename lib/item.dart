@@ -14,7 +14,7 @@ class Item {
   );
 
   static from(int typeID, EveSDE _sde) {
-    final query = _sde.typesTb.select(['*'], 'typeID=$typeID').last;
+    final query = _sde.types.select(['*'], 'typeID=$typeID').last;
     return Item(query['typeID'], query['typeName'], query['volume'], query['iconID']);
   }
 

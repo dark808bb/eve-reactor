@@ -25,17 +25,17 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
-    sde.typesTb.insert(999, 'test bp', .01, 33, 10);
-    sde.typesTb.insert(770, 'titan', .01, 0, 10);
-    sde.typesTb.insert(771, 'mexall', .01, 0, 10);
-    sde.typesTb.insert(772, 'pyery', .01, 0, 10);
+    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(999, 'test bp', .01, 33, 10);
+    sde.types.insert(770, 'titan', .01, 0, 10);
+    sde.types.insert(771, 'mexall', .01, 0, 10);
+    sde.types.insert(772, 'pyery', .01, 0, 10);
 
-    sde.bpProductTb.insert(999, 1, 42);
-    sde.bpMaterialsTb.insert(999, 770, 6);
-    sde.bpMaterialsTb.insert(999, 771, 6);
-    sde.bpMaterialsTb.insert(999, 772, 6);
-    sde.bpTimeTb.insert(999, 3600);
+    sde.bpProduct.insert(999, 1, 42);
+    sde.bpMaterials.insert(999, 770, 6);
+    sde.bpMaterials.insert(999, 771, 6);
+    sde.bpMaterials.insert(999, 772, 6);
+    sde.bpTime.insert(999, 3600);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
     final blueprints = eveSD.getBlueprints();
@@ -51,21 +51,21 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
-    sde.typesTb.insert(999, 'test bp', .01, 33, 10);
-    sde.typesTb.insert(998, 'fuelblk bp', .01, 33, 10);
-    sde.typesTb.insert(770, 'fuel blc', 5, FUEL_BLOCK_MARKET_GROUP_ID, 10);
-    sde.typesTb.insert(771, 'mexall', .01, 0, 10);
-    sde.typesTb.insert(772, 'pyery', .01, 0, 10);
+    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(999, 'test bp', .01, 33, 10);
+    sde.types.insert(998, 'fuelblk bp', .01, 33, 10);
+    sde.types.insert(770, 'fuel blc', 5, FUEL_BLOCK_MARKET_GROUP_ID, 10);
+    sde.types.insert(771, 'mexall', .01, 0, 10);
+    sde.types.insert(772, 'pyery', .01, 0, 10);
 
-    sde.bpProductTb.insert(999, 1, 42);
-    sde.bpProductTb.insert(998, 770, 42);
-    sde.bpMaterialsTb.insert(999, 770, 6);
-    sde.bpMaterialsTb.insert(999, 771, 6);
-    sde.bpMaterialsTb.insert(999, 772, 6);
-    sde.bpMaterialsTb.insert(998, 771, 6);
-    sde.bpTimeTb.insert(999, 3600);
-    sde.bpTimeTb.insert(998, 3600);
+    sde.bpProduct.insert(999, 1, 42);
+    sde.bpProduct.insert(998, 770, 42);
+    sde.bpMaterials.insert(999, 770, 6);
+    sde.bpMaterials.insert(999, 771, 6);
+    sde.bpMaterials.insert(999, 772, 6);
+    sde.bpMaterials.insert(998, 771, 6);
+    sde.bpTime.insert(999, 3600);
+    sde.bpTime.insert(998, 3600);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
     final blueprints = eveSD.getBlueprints();
@@ -82,21 +82,21 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
-    sde.typesTb.insert(999, 'test bp', .01, 33, 10);
-    sde.typesTb.insert(998, 'fuelblk bp', .01, 33, 10);
-    sde.typesTb.insert(770, 'fuel blk', 5, 8, 10);
-    sde.typesTb.insert(771, 'mexall', .01, 0, 10);
-    sde.typesTb.insert(772, 'pyery', .01, 0, 10);
+    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(999, 'test bp', .01, 33, 10);
+    sde.types.insert(998, 'fuelblk bp', .01, 33, 10);
+    sde.types.insert(770, 'fuel blk', 5, 8, 10);
+    sde.types.insert(771, 'mexall', .01, 0, 10);
+    sde.types.insert(772, 'pyery', .01, 0, 10);
 
-    sde.bpProductTb.insert(999, 1, 42);
-    sde.bpProductTb.insert(998, 770, 42);
-    sde.bpMaterialsTb.insert(999, 770, 6);
-    sde.bpMaterialsTb.insert(999, 771, 6);
-    sde.bpMaterialsTb.insert(999, 772, 6);
-    sde.bpMaterialsTb.insert(998, 771, 6);
-    sde.bpTimeTb.insert(999, 3600);
-    sde.bpTimeTb.insert(998, 3600);
+    sde.bpProduct.insert(999, 1, 42);
+    sde.bpProduct.insert(998, 770, 42);
+    sde.bpMaterials.insert(999, 770, 6);
+    sde.bpMaterials.insert(999, 771, 6);
+    sde.bpMaterials.insert(999, 772, 6);
+    sde.bpMaterials.insert(998, 771, 6);
+    sde.bpTime.insert(999, 3600);
+    sde.bpTime.insert(998, 3600);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
     final blueprints = eveSD.getBlueprints();
@@ -112,8 +112,8 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
-    sde.bpProductTb.insert(999, 1, 42);
+    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.bpProduct.insert(999, 1, 42);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 
@@ -126,8 +126,8 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
-    sde.bpProductTb.insert(999, 2, 42);
+    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.bpProduct.insert(999, 2, 42);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 
@@ -140,7 +140,7 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID, 9);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 
@@ -153,7 +153,7 @@ void main() {
     final sde = EveSDE(sqlite3.openInMemory());
     sde.setupForTesting();
 
-    sde.typesTb.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID + 1, 9);
+    sde.types.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID + 1, 9);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 
