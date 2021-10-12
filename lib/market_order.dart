@@ -1,10 +1,13 @@
 class Order {
   final double price;
   final int volRemaining;
-  final int typeID;
   final int stationID;
-  final int regionID;
   final bool isBuy;
 
-  Order(this.price, this.volRemaining, this.typeID, this.stationID, this.regionID, this.isBuy);
+  Order(this.price, this.volRemaining, this.stationID, this.isBuy);
+
+  @override
+  String toString() {
+    return {'price': price, 'volRemaining': volRemaining, 'stationID': stationID, 'isBuy': isBuy}.toString();
+  }
 }

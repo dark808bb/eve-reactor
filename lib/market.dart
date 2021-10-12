@@ -2,21 +2,50 @@ import 'dart:io';
 import 'market_order.dart';
 
 class Market {
-  final int typeID;
+  int _typeID = -1;
+  int _regionID = -1;
 
   List<Order> buys = [];
   List<Order> sells = [];
 
-  Market(this.typeID) {
-    var dir = Directory('C:/Users/gazin/Documents/EVE/logs/Marketlogs');
-    List<List<String>> xxx = [];
-    for (var fse in dir.listSync()) {
-      var v = File(fse.path);
-      xxx.add(v.readAsLinesSync());
-      print(xxx.last);
-      print('\n');
-      print('\n');
-      print('\n');
+  Market(File marketFile) {
+    var lines = marketFile.readAsLinesSync();
+    // discard header
+    lines = lines.sublist(1);
+    for (var line in lines) {
+      final cols = line.substring(0, line.length - 1).split(',');
+      _typeID = int.parse(cols[2]);
+      _regionID = int.parse(cols[11]);
+
+      final price = double.parse(cols[0]);
+      final volumeRemaining = double.parse(cols[1]).toInt();
+      final isBuy = cols[7] == 'True';
+      final stationID = int.parse(cols[10]);
+      final order = Order(price, volumeRemaining, stationID, isBuy);
+      if (isBuy) {
+        buys.add(order);
+      } else {
+        sells.add(order);
+      }
     }
+  }
+
+  bool exists() {
+    return _typeID != -1;
+  }
+
+  int getTypeID() {
+    assert(exists());
+    return _typeID;
+  }
+
+  int getRegionID() {
+    assert(exists());
+    return _regionID;
+  }
+
+  @override
+  String toString() {
+    return buys.toString() + '\n' + sells.toString();
   }
 }
