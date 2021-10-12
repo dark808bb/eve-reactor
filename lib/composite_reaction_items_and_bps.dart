@@ -49,7 +49,7 @@ class CompositeReactionItemsAndBPs {
     if (!isItemBuildable(typeID) || isItemFuelBlock(typeID)) {
       return;
     }
-    var blueprint = Blueprint.from(typeID, _sde);
+    final blueprint = Blueprint.from(typeID, _sde);
     _id2blueprint[typeID] = blueprint;
     for (var inputTypeID in blueprint.inputTypeIDs) {
       _cacheItemAndBP(inputTypeID);

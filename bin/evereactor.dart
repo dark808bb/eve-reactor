@@ -1,6 +1,6 @@
 import 'package:evereactor/eve_sde.dart';
 import 'package:evereactor/market.dart';
-import 'package:evereactor/evereactor.dart' as evereactor;
+import 'package:evereactor/load_sql_lib.dart' as evereactor;
 import 'package:evereactor/composite_reaction_items_and_bps.dart';
 
 import 'package:sqlite3/sqlite3.dart';
