@@ -8,19 +8,13 @@ class IndustryActivityProductsTable extends Table {
   IndustryActivityProductsTable(Database db) : super(db);
 
   @override
-  String getTableName() {
-    return 'industryActivityProducts';
-  }
+  String getTableName() => 'industryActivityProducts';
 
   @override
-  List<String> getColumnNames() {
-    return ['typeID', 'productTypeID', 'quantity'];
-  }
+  List<String> getColumnNames() => ['typeID', 'productTypeID', 'quantity'];
 
   @override
-  List<String> getTypeNames() {
-    return ['INTEGER', 'INTEGER', 'INTEGER'];
-  }
+  List<String> getTypeNames() => ['INTEGER', 'INTEGER', 'INTEGER'];
 
   void insert(int typeID, int productTypeID, int quantity) {
     db.execute(getInsertStatement([typeID, productTypeID, quantity]));

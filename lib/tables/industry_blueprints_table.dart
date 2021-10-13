@@ -8,19 +8,13 @@ class IndustryBlueprintMaxRunTable extends Table {
   IndustryBlueprintMaxRunTable(Database db) : super(db);
 
   @override
-  String getTableName() {
-    return 'industryBlueprints';
-  }
+  String getTableName() => 'industryBlueprints';
 
   @override
-  List<String> getColumnNames() {
-    return ['typeID', 'maxProductionLimit'];
-  }
+  List<String> getColumnNames() => ['typeID', 'maxProductionLimit'];
 
   @override
-  List<String> getTypeNames() {
-    return ['INTEGER', 'INTEGER'];
-  }
+  List<String> getTypeNames() => ['INTEGER', 'INTEGER'];
 
   void insert(int typeID, int maxProductionLimit) {
     db.execute(getInsertStatement([typeID, maxProductionLimit]));

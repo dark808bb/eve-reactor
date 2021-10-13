@@ -8,19 +8,13 @@ class InvTypesTable extends Table {
   InvTypesTable(Database db) : super(db);
 
   @override
-  String getTableName() {
-    return 'invTypes';
-  }
+  String getTableName() => 'invTypes';
 
   @override
-  List<String> getColumnNames() {
-    return ['typeID', 'typeName', 'volume', 'marketGroupID', 'iconID'];
-  }
+  List<String> getColumnNames() => ['typeID', 'typeName', 'volume', 'marketGroupID', 'iconID'];
 
   @override
-  List<String> getTypeNames() {
-    return ['INTEGER', 'VARCHAR(100)', 'FLOAT', 'INTEGER', 'INTEGER'];
-  }
+  List<String> getTypeNames() => ['INTEGER', 'VARCHAR(100)', 'FLOAT', 'INTEGER', 'INTEGER'];
 
   void insert(int typeID, String typeName, double volume, int marketGroupID, int iconID) {
     typeName = "'" + typeName + "'";
