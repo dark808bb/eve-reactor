@@ -73,7 +73,6 @@ void main() {
 
     expect(blueprints.length, 1);
     expect(items.length, 4);
-    // expect(blueprints[1]?.typeName, 'test');
 
     sde.dispose();
   });

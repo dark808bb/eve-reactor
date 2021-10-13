@@ -24,7 +24,6 @@ class InvTypesTable extends Table {
 
   void insert(int typeID, String typeName, double volume, int marketGroupID, int iconID) {
     typeName = "'" + typeName + "'";
-    db.execute(
-        getInsertStatement(['typeID', 'typeName', 'volume', 'marketGroupID', 'iconID'], [typeID, typeName, volume, marketGroupID, iconID]));
+    db.execute(getInsertStatement([typeID, typeName, volume, marketGroupID, iconID]));
   }
 }

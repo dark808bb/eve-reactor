@@ -23,6 +23,6 @@ class IndustryActivityMaterialsTable extends Table {
   }
 
   void insert(int typeID, int materialTypeID, int quantity) {
-    db.execute(getInsertStatement(['typeID', 'materialTypeID', 'quantity'], [typeID, materialTypeID, quantity]));
+    db.execute(getInsertStatement([typeID, materialTypeID, quantity]));
   }
 }

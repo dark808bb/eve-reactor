@@ -22,7 +22,8 @@ abstract class Table {
     return createStatement;
   }
 
-  String getInsertStatement(List<String> columns, List<dynamic> values) {
+  String getInsertStatement(List<dynamic> values) {
+    final columns = getColumnNames();
     if (columns.length != values.length) {
       return '';
     }

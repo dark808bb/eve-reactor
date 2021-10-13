@@ -23,6 +23,6 @@ class IndustryActivityTable extends Table {
   }
 
   void insert(int typeID, int time) {
-    db.execute(getInsertStatement(['typeID', 'time'], [typeID, time]));
+    db.execute(getInsertStatement([typeID, time]));
   }
 }
