@@ -1,3 +1,4 @@
+import 'package:evereactor/tables/industry_blueprints_table.dart';
 import 'package:sqlite3/sqlite3.dart';
 
 import 'package:evereactor/tables/industry_activity_materials_table.dart';
@@ -12,12 +13,14 @@ class EveSDE {
   final IndustryActivityProductsTable bpProduct;
   final IndustryActivityMaterialsTable bpMaterials;
   final IndustryActivityTable bpTime;
+  final IndustryBlueprintMaxRunTable bpMaxRuns;
 
   EveSDE(this.db)
       : types = InvTypesTable(db),
         bpProduct = IndustryActivityProductsTable(db),
         bpMaterials = IndustryActivityMaterialsTable(db),
-        bpTime = IndustryActivityTable(db);
+        bpTime = IndustryActivityTable(db),
+        bpMaxRuns = IndustryBlueprintMaxRunTable(db);
 
   void setupForTesting() {
     types.create();
