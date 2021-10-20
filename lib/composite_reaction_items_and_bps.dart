@@ -14,6 +14,7 @@ class CompositeReactionItemsAndBPs {
   CompositeReactionItemsAndBPs(this._sde);
 
   List<int> _getAdvancedMoonMaterialsTypeIDs() {
+    final int ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID = _sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID;
     final query = _sde.types.select(['typeID'], 'marketGroupID=$ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID');
     return query.map((e) => e['typeID'] as int).toList();
   }
@@ -61,6 +62,6 @@ class CompositeReactionItemsAndBPs {
   }
 
   bool isItemFuelBlock(int typeID) {
-    return _sde.types.select(['marketGroupID'], 'typeID=$typeID').last['marketGroupID'] == FUEL_BLOCK_MARKET_GROUP_ID;
+    return _sde.types.select(['marketGroupID'], 'typeID=$typeID').last['marketGroupID'] == _sde.constants.FUEL_BLOCK_MARKET_GROUP_ID;
   }
 }

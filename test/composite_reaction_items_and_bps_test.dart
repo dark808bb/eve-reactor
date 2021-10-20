@@ -8,8 +8,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('An empty database results in empty EveStaticData fields', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
     final blueprints = eveSD.getBlueprints();
@@ -22,10 +21,9 @@ void main() {
   });
 
   test('All items and blueprints are replicated in memory', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'test', .42, sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
     sde.types.insert(999, 'test bp', .01, 33, 10);
     sde.types.insert(770, 'titan', .01, 0, 10);
     sde.types.insert(771, 'mexall', .01, 0, 10);
@@ -48,13 +46,12 @@ void main() {
   });
 
   test('Fuel blocks are not built', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'test', .42, sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
     sde.types.insert(999, 'test bp', .01, 33, 10);
     sde.types.insert(998, 'fuelblk bp', .01, 33, 10);
-    sde.types.insert(770, 'fuel blc', 5, FUEL_BLOCK_MARKET_GROUP_ID, 10);
+    sde.types.insert(770, 'fuel blc', 5, sde.constants.FUEL_BLOCK_MARKET_GROUP_ID, 10);
     sde.types.insert(771, 'mexall', .01, 0, 10);
     sde.types.insert(772, 'pyery', .01, 0, 10);
 
@@ -78,10 +75,9 @@ void main() {
   });
 
   test('Fuel blocks are built when wrong market group is used', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'test', .42, sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
     sde.types.insert(999, 'test bp', .01, 33, 10);
     sde.types.insert(998, 'fuelblk bp', .01, 33, 10);
     sde.types.insert(770, 'fuel blk', 5, 8, 10);
@@ -108,10 +104,9 @@ void main() {
   });
 
   test('isItemBuildable returns true because item has a blueprint', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'test', .42, sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
     sde.bpProduct.insert(999, 1, 42);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
@@ -122,10 +117,9 @@ void main() {
   });
 
   test('isItemBuildable returns false because item does not have a blueprint', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'test', .42, ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'test', .42, sde.constants.ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID, 9);
     sde.bpProduct.insert(999, 2, 42);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
@@ -136,10 +130,9 @@ void main() {
   });
 
   test('isItemFuelBlock returns true', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID, 9);
+    sde.types.insert(1, 'fuel blk', .42, sde.constants.FUEL_BLOCK_MARKET_GROUP_ID, 9);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 
@@ -149,10 +142,9 @@ void main() {
   });
 
   test('isItemFuelBlock returns false', () {
-    final sde = EveSDE(sqlite3.openInMemory());
-    sde.setupForTesting();
+    final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
 
-    sde.types.insert(1, 'fuel blk', .42, FUEL_BLOCK_MARKET_GROUP_ID + 1, 9);
+    sde.types.insert(1, 'fuel blk', .42, sde.constants.FUEL_BLOCK_MARKET_GROUP_ID + 1, 9);
 
     final eveSD = CompositeReactionItemsAndBPs(sde);
 

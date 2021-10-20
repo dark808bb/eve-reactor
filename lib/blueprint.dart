@@ -22,6 +22,7 @@ class Blueprint {
   );
 
   static int _getBlueprintTypeID(int typeID, EveSDE sde) {
+    final int TEST_REACTION_BP_TYPE_ID = sde.constants.TEST_REACTION_BP_TYPE_ID;
     final query = sde.bpProduct.select(['typeID'], 'productTypeID=$typeID and typeID<>$TEST_REACTION_BP_TYPE_ID');
     return query.last['typeID'];
   }

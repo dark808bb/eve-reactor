@@ -45,12 +45,12 @@ class Market {
       for (var line in lines) {
         final cols = line.substring(0, line.length - 1).split(',');
         if (_typeID == -1) {
+          _typeID = int.parse(cols[2]);
+          _regionID = int.parse(cols[11]);
           // We do not care about types that are not in restrictToTypeIDs
           if (!restrictToTypeIDs.contains(_typeID)) {
             break;
           }
-          _typeID = int.parse(cols[2]);
-          _regionID = int.parse(cols[11]);
           if (!_market.containsKey(_typeID)) {
             _market[_typeID] = [];
           }
