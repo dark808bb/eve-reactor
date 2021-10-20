@@ -1,8 +1,7 @@
-import 'package:evereactor/tables/map_regions.dart';
-import 'package:evereactor/tables/map_solar_systems.dart';
-import 'package:evereactor/tables/market_groups.dart';
-
-import 'package:evereactor/tables/inv_types_table.dart';
+import 'package:evereactor/sde_tables/map_regions.dart';
+import 'package:evereactor/sde_tables/map_solar_systems.dart';
+import 'package:evereactor/sde_tables/market_groups.dart';
+import 'package:evereactor/sde_tables/inv_types_table.dart';
 
 class Constants {
   final MapSolarSystemsTable systemsTable;
@@ -25,9 +24,9 @@ class Constants {
       return;
     }
 
-    ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID = getIDForMarketGroup('Advanced Moon Materials');
-    PROCESSED_MOON_MATERIAL_MARKET_GROUP_ID = getIDForMarketGroup('Processed Moon Materials');
-    RAW_MOON_MATERIAL_MARKET_GROUP_ID = getIDForMarketGroup('Raw Moon Materials');
+    ADVANCED_MOON_MATERIAL_MARKET_GROUP_ID = getMarketGroupID('Advanced Moon Materials');
+    PROCESSED_MOON_MATERIAL_MARKET_GROUP_ID = getMarketGroupID('Processed Moon Materials');
+    RAW_MOON_MATERIAL_MARKET_GROUP_ID = getMarketGroupID('Raw Moon Materials');
 
     THE_FORGE_REGION_ID = getRegionID('The Forge');
     DOMAIN_REGION_ID = getRegionID('Domain');
@@ -48,7 +47,7 @@ class Constants {
     TEST_REACTION_BP_TYPE_ID = getTypeID('Test Reaction Blueprint');
   }
 
-  int getIDForMarketGroup(String name) {
+  int getMarketGroupID(String name) {
     name = "'" + name + "'";
     return marketGroupsTable.select(['marketGroupID'], 'marketGroupName=$name').last['marketGroupID'];
   }

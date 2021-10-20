@@ -1,5 +1,5 @@
 import 'package:sqlite3/sqlite3.dart';
-import 'package:evereactor/tables/table.dart';
+import 'package:evereactor/sde_tables/table.dart';
 
 import 'table.dart';
 
