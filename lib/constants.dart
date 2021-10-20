@@ -11,7 +11,7 @@ class Constants {
 
   // This class acts a bit differently when in a testing environment
   final bool isTesting;
-  static const int X = 100000;
+  static const int X = -1000000;
 
   Constants(db, this.isTesting)
       : systemsTable = MapSolarSystemsTable(db),
