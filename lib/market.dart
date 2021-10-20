@@ -5,8 +5,8 @@ class Market {
   int _typeID = -1;
   int _regionID = -1;
 
-  List<Order> buys = [];
-  List<Order> sells = [];
+  final List<Order> buys = [];
+  final List<Order> sells = [];
 
   Market(File marketFile) {
     var lines = marketFile.readAsLinesSync();
@@ -23,7 +23,8 @@ class Market {
       final volumeRemaining = double.parse(cols[1]).toInt();
       final isBuy = cols[7] == 'True';
       final stationID = int.parse(cols[10]);
-      final order = Order(price, volumeRemaining, stationID, isBuy);
+      final systemID = int.parse(cols[12]);
+      final order = Order(price, volumeRemaining, stationID, systemID, isBuy);
       if (isBuy) {
         buys.add(order);
       } else {
