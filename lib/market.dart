@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'market_order.dart';
+import 'order_filter.dart';
 
 class Market {
   // A map from typeIDs to orders
-  Map<int, List<Order>> market = {};
-  // Map<int, List<Order>> filteredMarket = {};
-  // OrderFilter filter = OrderFilter();
+  final Map<int, List<Order>> _market = {};
+
+  OrderFilter _filter = OrderFilter();
+  Map<int, List<Order>> _filteredMarket = {};
 
   Market.fromMarketLogs(List<int> restrictToTypeIDs) {
     Map<String, List<dynamic>> mostUpToDateMarketLog = {};
@@ -49,8 +51,8 @@ class Market {
           }
           _typeID = int.parse(cols[2]);
           _regionID = int.parse(cols[11]);
-          if (!market.containsKey(_typeID)) {
-            market[_typeID] = [];
+          if (!_market.containsKey(_typeID)) {
+            _market[_typeID] = [];
           }
         }
 
@@ -60,15 +62,30 @@ class Market {
         final isBuy = cols[7] == 'True';
         final systemID = int.parse(cols[12]);
         final order = Order(_typeID, systemID, _regionID, isBuy, price, volumeRemaining);
-        market[_typeID]!.add(order);
+        _market[_typeID]!.add(order);
       }
     }
 
+    // Make sure that _market does not contain any null values
     for (var typeID in restrictToTypeIDs) {
-      if (!market.containsKey(typeID)) {
+      if (!_market.containsKey(typeID)) {
         // TODO show warning that no orders were found for typeID in market logs
-        market[typeID] = [];
+        _market[typeID] = [];
       }
     }
+
+    _filterMarket();
+  }
+
+  void _filterMarket() {
+    _filteredMarket = {};
+    for (var id in _market.keys) {
+      _filteredMarket[id] = _market[id]!.where((order) => _filter.filter(order)).toList();
+    }
+  }
+
+  void setMarketFilter(filter) {
+    _filter = filter;
+    _filterMarket();
   }
 }
