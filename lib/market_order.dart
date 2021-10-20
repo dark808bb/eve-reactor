@@ -1,14 +1,22 @@
 class Order {
-  final double price;
-  final int volRemaining;
-  final int stationID;
+  final int typeID;
   final int systemID;
+  final int regionID;
   final bool isBuy;
+  final double price;
+  final int volumeRemaining;
 
-  Order(this.price, this.volRemaining, this.stationID, this.systemID, this.isBuy);
+  Order(this.typeID, this.systemID, this.regionID, this.isBuy, this.price, this.volumeRemaining);
 
   @override
   String toString() {
-    return {'price': price, 'volRemaining': volRemaining, 'stationID': stationID, 'systemID': systemID, 'isBuy': isBuy}.toString();
+    return {
+      'typeID': typeID,
+      'systemID': systemID,
+      'regionID': regionID,
+      'isBuy': isBuy,
+      'price': price,
+      'volumeRemaining': volumeRemaining
+    }.toString();
   }
 }
