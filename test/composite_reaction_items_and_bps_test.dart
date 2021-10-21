@@ -6,6 +6,8 @@ import 'package:evereactor/composite_reaction_items_and_bps.dart';
 
 import 'package:test/test.dart';
 
+// TODO maybe I should use the real eve SDE database instead of an empty database?
+
 void main() {
   test('An empty database results in empty EveStaticData fields', () {
     final sde = EveSDE(sqlite3.openInMemory(), isTesting: true);
